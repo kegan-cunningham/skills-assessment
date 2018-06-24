@@ -19,9 +19,11 @@ function renderPeople() {
   var ul = document.getElementById("peoples");
   ul.innerHTML = '';
   var emailOrPhone = document.getElementById("select").selectedIndex;
+
   people.forEach((person, i) => {
     var newLi = document.createElement("li");
 
+    // left side: includes colored bullet and name
     var leftSideSpan = document.createElement('span');
       var colorSpan = document.createElement('span');
       colorSpan.classList += 'color';
@@ -38,6 +40,7 @@ function renderPeople() {
     leftSideSpan.classList += 'left-side';
     newLi.appendChild(leftSideSpan);
 
+    // right side includes email or phone, depending on the value of the select box
     if(emailOrPhone === 0){
       var emailSpan = document.createElement('span');
       emailSpan.classList += 'email';
@@ -52,11 +55,13 @@ function renderPeople() {
       newLi.appendChild(phoneSpan);
     }
 
-    (function(value){
+    // adding an onclick listener to each li
+    (function(){
         newLi.addEventListener("click", function() {
            handleClick(newLi, person);
         }, false);})(newLi, person);
 
+    // alternating the bgcolor of each li between black and gray
     newLi.id = "li";
     if(i % 2 !== 0) {
       newLi.classList += "black";
@@ -64,24 +69,34 @@ function renderPeople() {
       newLi.classList += "gray";
     }
 
+    // creating the span that is displayed onclick (display:none by default)
     var onClickSpan = document.createElement('span');
     onClickSpan.id = `on-click-span${person.name}`;
     onClickSpan.classList += 'on-click-span';
     newLi.appendChild(onClickSpan);
+
+    // finally, appending the li to the people ul
     ul.appendChild(newLi);
   });
 }
 
+// re-render people when the select box is changed
+// note: This isn't ideal. It would be better to only re-render the right side.
 function handleSelectChange(selected){
   renderPeople();
 }
 
+// handle building the span that is displayed when an li is clicked
+// to-do: add modal that darkens the rest of the people ul
+//        put 'display: none' back on all onClickSpans when the modal is clicked
 function handleClick(li, person){
+  // making sure all other onClickSpans are not currently displaying
   allOnClicks = document.querySelectorAll(".on-click-span");
   allOnClicks.forEach((span) => {
     span.style = 'display: none';
   });
 
+  // finding the current onClickSpan and resetting its innerHTML, and displaying it
   clickInfo = document.getElementById(`on-click-span${person.name}`);
   clickInfo.innerHTML = '';
   clickInfo.style = 'display: flex';
@@ -103,5 +118,4 @@ function handleClick(li, person){
   var address = document.createTextNode(`${person.address}`);
   addressSpan.appendChild(address);
   clickInfo.appendChild(addressSpan);
-
 }
