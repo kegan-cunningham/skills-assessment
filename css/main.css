@@ -40,6 +40,7 @@
 }
 
 .people {
+  position: relative;
   font-size: 14;
   font-family: Arial;
   list-style: none;
@@ -66,6 +67,7 @@
 
 .select {
   margin: 10px;
+  margin-top: 13px;
   margin-left: 170px;
 }
 

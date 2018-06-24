@@ -9,10 +9,10 @@ const people = [
   {'name': 'Rich', 'email': 'rich@tripod.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
   {'name': 'Scott', 'email': 'scott@mailinator.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
   {'name': 'Danny', 'email': 'danny@hotmail.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
-  {'name': 'Taka', 'email': 'taka@myspace.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
-  {'name': 'Tim', 'email': 'tim@netscape.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
+  {'name': 'Taka', 'email': 'taka@myspace.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#FF0000'},
+  {'name': 'Tim', 'email': 'tim@netscape.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#BFC900'},
   {'name': 'Patrick', 'email': 'patrick@live.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
-  {'name': 'Jacques', 'email': 'jacques@aol.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'}
+  {'name': 'Jacques', 'email': 'jacques@aol.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#BFC900'}
 ];
 
 function renderPeople() {
@@ -104,5 +104,4 @@ function handleClick(li, person){
   addressSpan.appendChild(address);
   clickInfo.appendChild(addressSpan);
 
-  console.log(li)
 }
