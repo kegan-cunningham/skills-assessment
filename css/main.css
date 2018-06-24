@@ -1,6 +1,6 @@
 .widget {
-  height: 400px;
-  width: 250px;
+  height: 440px;
+  width: 350px;
   background-color: #313131;
   border: 1px solid #FCFCFC;
   margin: 0px auto;
@@ -18,10 +18,24 @@
   font-weight: normal;
 }
 
-span {
+.left-side{
+  display: flex;
+  align-items: center;
+  width: 110px;
+  border-right: 1px solid black;
+  height: 40px;
+}
+
+.color {
   transform: scale(2);
   margin-right: 15px;
   margin-left: 10px;
+  display: inline-block;
+}
+
+.email {
+  text-align: left;
+  margin-left: 30px;
 }
 
 .people {
@@ -33,6 +47,7 @@ span {
   margin: 0px;
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
 }
 
 .people li {
@@ -40,6 +55,8 @@ span {
   padding: 10px;
   border-top: 1px solid black;
   max-height: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .name {
