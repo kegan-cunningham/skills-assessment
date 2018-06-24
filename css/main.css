@@ -57,6 +57,7 @@
   border-top: 1px solid black;
   max-height: 20px;
   align-items: center;
+  position: relative;
 }
 
 .name {
@@ -86,4 +87,22 @@
 
 .gray {
   background-color: #212121;
+}
+
+.on-click-span {
+  position: absolute;
+  left: 120px;
+  top: 0px;
+  background-color: #484848;
+  display: none;
+  flex-direction: column;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 178px;
+  margin-bottom: -50px;
+  z-index: 9;
+}
+
+.on-click-span span {
+  padding: 5px;
 }

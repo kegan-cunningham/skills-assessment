@@ -5,14 +5,14 @@ window.onload = function() {
 let widget = document.getElementById('widget');
 
 const people = [
-  {'name': 'Christian', 'email': 'christian@yahoo.com', 'phone': '323-555-1234', 'address': '', 'color': '#00FF2C'},
-  {'name': 'Rich', 'email': 'rich@tripod.com', 'phone': '323-555-1234', 'address': '', 'color': '#00FF2C'},
-  {'name': 'Scott', 'email': 'scott@mailinator.com', 'phone': '323-555-1234', 'address': '', 'color': '#00FF2C'},
-  {'name': 'Danny', 'email': 'danny@hotmail.com', 'phone': '323-555-1234', 'address': '', 'color': '#00FF2C'},
-  {'name': 'Taka', 'email': 'taka@myspace.com', 'phone': '323-555-1234', 'address': '', 'color': '#00FF2C'},
-  {'name': 'Tim', 'email': 'tim@netscape.com', 'phone': '323-555-1234', 'address': '', 'color': '#00FF2C'},
-  {'name': 'Patrick', 'email': 'patrick@live.com', 'phone': '323-555-1234', 'address': '', 'color': '#00FF2C'},
-  {'name': 'Jacques', 'email': 'jacques@aol.com', 'phone': '323-555-1234', 'address': '', 'color': '#00FF2C'}
+  {'name': 'Christian', 'email': 'christian@yahoo.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
+  {'name': 'Rich', 'email': 'rich@tripod.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
+  {'name': 'Scott', 'email': 'scott@mailinator.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
+  {'name': 'Danny', 'email': 'danny@hotmail.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
+  {'name': 'Taka', 'email': 'taka@myspace.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
+  {'name': 'Tim', 'email': 'tim@netscape.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
+  {'name': 'Patrick', 'email': 'patrick@live.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
+  {'name': 'Jacques', 'email': 'jacques@aol.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'}
 ];
 
 function renderPeople() {
@@ -54,8 +54,8 @@ function renderPeople() {
 
     (function(value){
         newLi.addEventListener("click", function() {
-           alert(value);
-        }, false);})(person);
+           handleClick(newLi, person);
+        }, false);})(newLi, person);
 
     newLi.id = "li";
     if(i % 2 !== 0) {
@@ -63,10 +63,46 @@ function renderPeople() {
     } else {
       newLi.classList += "gray";
     }
+
+    var onClickSpan = document.createElement('span');
+    onClickSpan.id = `on-click-span${person.name}`;
+    onClickSpan.classList += 'on-click-span';
+    newLi.appendChild(onClickSpan);
     ul.appendChild(newLi);
   });
 }
 
 function handleSelectChange(selected){
   renderPeople();
+}
+
+function handleClick(li, person){
+  allOnClicks = document.querySelectorAll(".on-click-span");
+  allOnClicks.forEach((span) => {
+    span.style = 'display: none';
+  });
+
+  clickInfo = document.getElementById(`on-click-span${person.name}`);
+  clickInfo.innerHTML = '';
+  clickInfo.style = 'display: flex';
+
+  var emailSpan = document.createElement('span');
+  emailSpan.classList += 'click-email';
+  var email = document.createTextNode(`${person.email}`);
+  emailSpan.appendChild(email);
+  clickInfo.appendChild(emailSpan);
+
+  var phoneSpan = document.createElement('span');
+  phoneSpan.classList += 'click-phone';
+  var phone = document.createTextNode(`${person.phone}`);
+  phoneSpan.appendChild(phone);
+  clickInfo.appendChild(phoneSpan);
+
+  var addressSpan = document.createElement('span');
+  addressSpan.classList += 'click-address';
+  var address = document.createTextNode(`${person.address}`);
+  addressSpan.appendChild(address);
+  clickInfo.appendChild(addressSpan);
+
+  console.log(li)
 }
