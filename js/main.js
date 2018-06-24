@@ -1,8 +1,11 @@
 window.onload = function() {
   renderPeople();
+  modal = document.getElementById('modal');
+  (function(){
+      modal.addEventListener("click", function() {
+         removeClickSpan();
+      }, false);})();
 }
-
-let widget = document.getElementById('widget');
 
 const people = [
   {'name': 'Christian', 'email': 'christian@yahoo.com', 'phone': '323-555-1234', 'address': '6539 Wilton Ave. Culver City, CA 90234', 'color': '#00FF2C'},
@@ -87,14 +90,16 @@ function handleSelectChange(selected){
 }
 
 // handle building the span that is displayed when an li is clicked
-// to-do: add modal that darkens the rest of the people ul
-//        put 'display: none' back on all onClickSpans when the modal is clicked
+// to-do: dont darken name of person with modal
 function handleClick(li, person){
   // making sure all other onClickSpans are not currently displaying
   allOnClicks = document.querySelectorAll(".on-click-span");
   allOnClicks.forEach((span) => {
     span.style = 'display: none';
   });
+
+  modal = document.getElementById('modal');
+  modal.style = 'display: block';
 
   // finding the current onClickSpan and resetting its innerHTML, and displaying it
   clickInfo = document.getElementById(`on-click-span${person.name}`);
@@ -118,4 +123,13 @@ function handleClick(li, person){
   var address = document.createTextNode(`${person.address}`);
   addressSpan.appendChild(address);
   clickInfo.appendChild(addressSpan);
+}
+
+function removeClickSpan() {
+  allOnClicks = document.querySelectorAll(".on-click-span");
+  allOnClicks.forEach((span) => {
+    span.style = 'display: none';
+  });
+  modal = document.getElementById('modal');
+  modal.style = 'display: none';
 }

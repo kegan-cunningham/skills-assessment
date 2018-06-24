@@ -108,3 +108,18 @@
 .on-click-span span {
   padding: 5px;
 }
+
+figure {
+  position: relative;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  left: -40;
+  height: 330px;
+  width: 300px;
+  background-color: black;
+  opacity: .7;
+  z-index: 5;
+}
