@@ -19,7 +19,7 @@ function renderPeople() {
   var ul = document.getElementById("peoples");
   ul.innerHTML = '';
   var emailOrPhone = document.getElementById("select").selectedIndex;
-  people.forEach(person => {
+  people.forEach((person, i) => {
     var newLi = document.createElement("li");
 
     var leftSideSpan = document.createElement('span');
@@ -37,6 +37,7 @@ function renderPeople() {
       leftSideSpan.appendChild(nameSpan);
     leftSideSpan.classList += 'left-side';
     newLi.appendChild(leftSideSpan);
+
     if(emailOrPhone === 0){
       var emailSpan = document.createElement('span');
       emailSpan.classList += 'email';
@@ -45,12 +46,23 @@ function renderPeople() {
       newLi.appendChild(emailSpan);
     } else{
       var phoneSpan = document.createElement('span');
-      phoneSpan.classList += 'email323-555-1234';
+      phoneSpan.classList += 'email';
       var phone = document.createTextNode(`${person.phone}`);
       phoneSpan.appendChild(phone);
       newLi.appendChild(phoneSpan);
     }
+
+    (function(value){
+        newLi.addEventListener("click", function() {
+           alert(value);
+        }, false);})(person);
+
     newLi.id = "li";
+    if(i % 2 !== 0) {
+      newLi.classList += "black";
+    } else {
+      newLi.classList += "gray";
+    }
     ul.appendChild(newLi);
   });
 }
