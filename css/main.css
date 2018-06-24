@@ -123,3 +123,8 @@ figure {
   opacity: .7;
   z-index: 5;
 }
+
+.click-email {
+  color: #1CA29E;
+  text-decoration: underline;
+}

@@ -1,3 +1,8 @@
+// Thanks for the coding challenge!
+// I may have overused javascript a bit, but I believe I got all of the specified functionality and nearly all of the styling.
+// I spent just over 3 hours making this.
+// Still to-do: Add gradient to top of widget, find a closer font, DRY up some of the repeated code
+
 window.onload = function() {
   renderPeople();
   modal = document.getElementById('modal');
@@ -90,13 +95,14 @@ function handleSelectChange(selected){
 }
 
 // handle building the span that is displayed when an li is clicked
-// to-do: dont darken name of person with modal
 function handleClick(li, person){
   // making sure all other onClickSpans are not currently displaying
   allOnClicks = document.querySelectorAll(".on-click-span");
   allOnClicks.forEach((span) => {
     span.style = 'display: none';
   });
+
+  Object.assign(li.style,{zIndex: 7, backgroundColor: '#484848'});
 
   modal = document.getElementById('modal');
   modal.style = 'display: block';
@@ -132,4 +138,9 @@ function removeClickSpan() {
   });
   modal = document.getElementById('modal');
   modal.style = 'display: none';
+
+  allLis = document.querySelectorAll("li");
+  allLis.forEach((li) => {
+    li.style = '';
+  });
 }
